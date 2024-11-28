@@ -1,29 +1,47 @@
 package fr.com.gestionnairefilms;
 
 
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-
-
-import java.io.*;
 
 public class Film {
     private String titre;
     private int note;
-
-    private Date dateSortie;
+    private Integer dateSortie;
     private Boolean visionneParUtilisateur;
     private ArrayList<String> acteurs;  // List of actors
     private String realisateur;  // Director
 
-    public Film(String titre, int note, Date dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur) {
+    public Film(String titre, int note, Integer dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur) {
         this.titre = titre;
         this.note = note;
         this.dateSortie = dateSortie;
         this.visionneParUtilisateur = visionneParUtilisateur;
         this.acteurs = (ArrayList<String>) acteurs;
         this.realisateur = realisateur;
+    }
+    public String getTitre() {
+        return titre;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public int getDateSortie() {
+        return dateSortie;
+    }
+
+    public Boolean getVisionneParUtilisateur() {
+        return visionneParUtilisateur;
+    }
+
+    public List<String> getActeurs() {
+        return acteurs;
+    }
+
+    public String getRealisateur() {
+        return realisateur;
     }
 
     @Override

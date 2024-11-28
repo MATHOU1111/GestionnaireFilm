@@ -1,0 +1,81 @@
+/* styles.css */
+
+/* Style général de l'application */
+.root {
+    -fx-background-color: #1a202c;
+    -fx-text-fill: #d1d5db;
+    -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Style du TableView */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #d1d5db;
+}
+
+/* En-tête du TableView */
+.table-view .column-header-background {
+    -fx-background-color: #2d3748;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35px;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-weight: bold;
+}
+
+/* Lignes du TableView */
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #1e293b;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #273549;
+}
+
+.table-cell {
+    -fx-text-fill: #d1d5db;
+    -fx-font-size: 14px;
+    -fx-padding: 30px;
+}
+
+/* Style des cellules sélectionnées */
+.table-row-cell:selected {
+    -fx-background-color: #4a5568;
+}
+
+.table-cell:selected {
+    -fx-text-fill: #ffffff;
+}
+
+/* Barres de défilement */
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #2d3748;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #4a5568;
+    -fx-background-insets: 2;
+    -fx-background-radius: 4;
+}
+
+/* Style des colonnes */
+.table-column {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15 10 15;
+}
