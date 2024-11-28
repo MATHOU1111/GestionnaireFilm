@@ -5,12 +5,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
 
 <VBox alignment="CENTER" prefHeight="619.0" prefWidth="899.0" spacing="20.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <TableView fx:id="tableView" style="-fx-background-color: #1a2027;">
+    <TableView fx:id="tableView" style="-fx-background-color: #1a2027;" placeholder="Ajouter des films pour utiliser l'application.">
         <columns>
             <TableColumn fx:id="filmColumn" text="Film">
                 <cellValueFactory>
