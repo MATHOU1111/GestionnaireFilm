@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="fr.com.gestionnairefilms.ModalController">
+<VBox alignment="TOP_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@modal.css" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="fr.com.gestionnairefilms.ModalController">
     <padding>
-        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+        <Insets top="40.0" right="40.0" bottom="40.0" left="40.0" />
     </padding>
     <children>
-        <Label fx:id="titleLabel" text="Titre: "/>
-        <Label fx:id="directorLabel" text="Réalisateur: "/>
-        <Label fx:id="yearLabel" text="Année: "/>
-        <Label fx:id="visionneParUtilisateurLabel" text="Visionné par l'utilisateur: "/>
-        <Label fx:id="noteLabel" text="Note: "/>
-        <Label fx:id="actorsLabel" text="Acteurs principaux: "/>
-        <Label fx:id="summaryLabel" text="Résumé: "/>
-        <Button text="Fermer" onAction="#closeWindow"/>
+        <TextField fx:id="titleInput" editable="false" styleClass="label-header"/>
+        <TextField fx:id="directorInput" editable="false" styleClass="label"/>
+        <TextField fx:id="yearInput" editable="false" styleClass="label"/>
+        <TextField fx:id="visionneParUtilisateurInput" editable="false" styleClass="label"/>
+        <TextField fx:id="noteInput" editable="false" styleClass="label"/>
+        <TextField fx:id="actorsInput" editable="false" styleClass="label"/>
+        <TextArea fx:id="summaryInput" wrapText="true" editable="false" styleClass="label text-area-mod" prefRowCount="8"/>
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="modifier" text="Modifier" onAction="#modifierFilm" styleClass="btn-primary"/>
+            <Button text="Supprimer" styleClass="btn-danger"/>
+        </HBox>
     </children>
 </VBox>

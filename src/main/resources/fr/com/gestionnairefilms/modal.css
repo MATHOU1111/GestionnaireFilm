@@ -1,0 +1,26 @@
+.text-field {
+    -fx-background-color: transparent, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2; /* Remove background */
+    -fx-background-radius: 0; /* Remove rounded corners */
+    -fx-padding: 4 4 4 4; /* Remove padding */
+    -fx-cursor: default; /* Default cursor instead of text cursor */
+}
+
+.text-field:editable {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 4;
+    -fx-padding: 4 4 4 4; /* Reset padding when editable */
+    -fx-cursor: text; /* Text cursor when editable */
+}
+
+.text-area-mod {
+    -fx-control-inner-background: #f0f0f0; /* Couleur de fond quand non éditable */
+    -fx-font-size: 14px;
+    -fx-border-color: transparent; /* Cache la bordure */
+}
+
+.text-area-mod:editable {
+    -fx-control-inner-background: #949087; /* Fond blanc quand éditable */
+    -fx-border-color: default; /* Affiche la bordure standard lors de l'édition */
+}

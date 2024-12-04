@@ -26,6 +26,7 @@ public class Film {
         return titre;
     }
 
+
     public int getNote() {
         return note;
     }
@@ -47,6 +48,35 @@ public class Film {
     }
 
     public String getSummary(){ return summary;}
+
+    // Setters
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
+    public void setDateSortie(Integer dateSortie) {
+        this.dateSortie = dateSortie;
+    }
+
+    public void setVisionneParUtilisateur(Boolean visionneParUtilisateur) {
+        this.visionneParUtilisateur = visionneParUtilisateur;
+    }
+
+    public void setActeurs(List<String> acteurs) {
+        this.acteurs = new ArrayList<>(acteurs);
+    }
+
+    public void setRealisateur(String realisateur) {
+        this.realisateur = realisateur;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
 
     @Override
     public String toString(){

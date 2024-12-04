@@ -4,40 +4,55 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="619.0" prefWidth="899.0" spacing="20.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.HelloController">
+<VBox prefHeight="619.0" prefWidth="600.0" spacing="20.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <TableView fx:id="tableView" prefHeight="610.0" prefWidth="859.0">
+    <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="859.0" spacing="10">
+        <ImageView fitHeight="72.0" fitWidth="72.0">
+            <image>
+                <Image url="@./soda.png" />
+            </image>
+        </ImageView>
+        <Region HBox.hgrow="ALWAYS" />
+        <Text styleClass="title-text" text="GESTIONNAIRE DE FILMS" />
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+    <TableView fx:id="tableView" prefHeight="562.0" prefWidth="600">
         <columns>
-            <TableColumn fx:id="filmColumn" text="Film">
+            <TableColumn fx:id="filmColumn" prefWidth="106.4000301361084" text="Film">
                 <cellValueFactory>
                     <PropertyValueFactory property="titre" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="ratingColumn" text="Note">
+            <TableColumn fx:id="ratingColumn" prefWidth="96.0" text="Note">
                 <cellValueFactory>
                     <PropertyValueFactory property="note" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="dateSortieColumn" text="Date de Sortie">
+            <TableColumn fx:id="dateSortieColumn" prefWidth="147.199951171875" text="Date de Sortie">
                 <cellValueFactory>
                     <PropertyValueFactory property="dateSortie" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="visionneColumn" text="Visionné">
+            <TableColumn fx:id="visionneColumn" prefWidth="100.79998779296875" text="Visionné">
                 <cellValueFactory>
                     <PropertyValueFactory property="visionneParUtilisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="realisateur" text="Réalisateur">
+            <TableColumn fx:id="realisateur" prefWidth="139.19998168945312" text="Réalisateur">
                 <cellValueFactory>
                     <PropertyValueFactory property="realisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="actors" text="Acteurs principaux">
+            <TableColumn fx:id="actors" prefWidth="266.4000122070313" text="Acteurs principaux">
                 <cellValueFactory>
                     <PropertyValueFactory property="acteurs" />
                 </cellValueFactory>

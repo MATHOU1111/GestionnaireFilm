@@ -79,3 +79,11 @@
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 10 15 10 15;
 }
+
+/* styles.css */
+.title-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #ffffff;
+}
+
