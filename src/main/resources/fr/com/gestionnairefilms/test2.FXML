@@ -1,0 +1,6 @@
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox fx:id="test2" xmlns:fx="http://javafx.com/fxml" fx:controller="fr.com.gestionnairefilms.ModalController">
+    <!-- Interface Part2 -->
+</VBox>

@@ -11,14 +11,16 @@ public class Film {
     private Boolean visionneParUtilisateur;
     private ArrayList<String> acteurs;  // List of actors
     private String realisateur;  // Director
+    private String summary;
 
-    public Film(String titre, int note, Integer dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur) {
+    public Film(String titre, int note, Integer dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur, String summary) {
         this.titre = titre;
         this.note = note;
         this.dateSortie = dateSortie;
         this.visionneParUtilisateur = visionneParUtilisateur;
         this.acteurs = (ArrayList<String>) acteurs;
         this.realisateur = realisateur;
+        this.summary = summary;
     }
     public String getTitre() {
         return titre;
@@ -44,6 +46,8 @@ public class Film {
         return realisateur;
     }
 
+    public String getSummary(){ return summary;}
+
     @Override
     public String toString(){
         return "titre='" + titre + '\'' +
@@ -51,7 +55,9 @@ public class Film {
                 ", dateSortie=" + dateSortie +
                 ", visionneParUtilisateur=" + visionneParUtilisateur +
                 ", acteurs=" + acteurs +
-                ", realisateur='" + realisateur + '\'';
+                ", realisateur='" + realisateur + '\'' +
+                ",summary='" + summary + '\'';
+
     }
 
 

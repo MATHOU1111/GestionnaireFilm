@@ -4,39 +4,66 @@ package fr.com.gestionnairefilms;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.util.List;
 
 import static fr.com.gestionnairefilms.FilmController.getFilms;
+
 
 public class HelloController {
     @FXML
     private TableView<Film> tableView;
 
     @FXML
+    private void closeWindow() {
+        System.out.println("lol");
+    }
+
+    @FXML
     public void initialize() {
-        // Ajouter des films au TableView
-        Film nouveauFilm = new Film("Inception", 9, 2010, true, null, "Christopher Nolan");
-        tableView.getItems().add(nouveauFilm);
         loadFilms();
 
-        // Ajouter un écouteur d'événements au TableView
+        // Ajouter un écouteur d'événements au TableVew
         tableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
                 Film selectedFilm = tableView.getSelectionModel().getSelectedItem();
-                if (selectedFilm != null) {
-                    afficherDetailsFilm(selectedFilm);
+                System.out.println(selectedFilm);
+                try {
+                    showFilmDetails(selectedFilm);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
     }
 
-    public void afficherDetailsFilm(Film selectedFilm) {
-        System.out.println(selectedFilm);
+
+    public void showFilmDetails(Film selectedFilm) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModalWindow.fxml"));
+        VBox root = loader.load();
+        ModalController controller = loader.getController();
+
+        Stage modalStage = new Stage();
+        modalStage.setTitle("Détails du Film");
+        modalStage.initModality(Modality.APPLICATION_MODAL);
+        modalStage.initOwner(tableView.getScene().getWindow());  // Assurez-vous que tableView existe dans HelloController.
+
+        Scene scene = new Scene(root);
+        modalStage.setScene(scene);
+
+        controller.setFilmData(selectedFilm);
+
+        modalStage.showAndWait();
     }
 
     private void loadFilms() {
@@ -59,10 +86,15 @@ public class HelloController {
                 boolean visionneParUtilisateur = (boolean) filmJson.get("visionneParUtilisateur");
                 String realisateur = (String) filmJson.get("director");
                 List<String> acteurs = (List<String>) filmJson.get("actors");
+                String summary = (String) filmJson.get("summary");
 
-                films.add(new Film(titre, note, dateSortie, visionneParUtilisateur, acteurs, realisateur));
+                films.add(new Film(titre, note, dateSortie, visionneParUtilisateur, acteurs, realisateur, summary));
             }
         }
+        System.out.println(tableView);
         tableView.setItems(films);
     }
+
 }
+
+

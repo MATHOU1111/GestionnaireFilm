@@ -5,40 +5,39 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
 
 <VBox alignment="CENTER" prefHeight="619.0" prefWidth="899.0" spacing="20.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <TableView fx:id="tableView" style="-fx-background-color: #1a2027;" placeholder="Ajouter des films pour utiliser l'application.">
+    <TableView fx:id="tableView" prefHeight="610.0" prefWidth="859.0">
         <columns>
             <TableColumn fx:id="filmColumn" text="Film">
                 <cellValueFactory>
                     <PropertyValueFactory property="titre" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="ratingColumn" prefWidth="96.79999542236328" text="Note">
+            <TableColumn fx:id="ratingColumn" text="Note">
                 <cellValueFactory>
                     <PropertyValueFactory property="note" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="dateSortieColumn" minWidth="2.4000244140625" prefWidth="131.20001220703125" text="Date de Sortie">
+            <TableColumn fx:id="dateSortieColumn" text="Date de Sortie">
                 <cellValueFactory>
                     <PropertyValueFactory property="dateSortie" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="visionneColumn" prefWidth="96.0" text="Visionné">
+            <TableColumn fx:id="visionneColumn" text="Visionné">
                 <cellValueFactory>
                     <PropertyValueFactory property="visionneParUtilisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="realisateur" prefWidth="127.19998168945312" text="Réalisateur">
+            <TableColumn fx:id="realisateur" text="Réalisateur">
                 <cellValueFactory>
                     <PropertyValueFactory property="realisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="actors" prefWidth="324.8000366210938" text="Acteurs principaux">
+            <TableColumn fx:id="actors" text="Acteurs principaux">
                 <cellValueFactory>
                     <PropertyValueFactory property="acteurs" />
                 </cellValueFactory>
