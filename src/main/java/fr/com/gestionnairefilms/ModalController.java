@@ -1,15 +1,25 @@
 package fr.com.gestionnairefilms;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.json.simple.JSONArray;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ModalController {
+    private static Stage stage;
+
+    private static Film selectedFilm;
+
     @FXML
     TextField titleInput;
 
@@ -31,20 +41,29 @@ public class ModalController {
     @FXML
     private TextField actorsInput;
 
-    private Stage stage;
-
-    private Film selectedFilm;
+    @FXML
+    private Button modifier;
 
     @FXML
-    Button modifier;
+    private Button confirmButton;
 
+    @FXML
+    private Button cancelButton;
+
+    public void setStage(Stage stage) {
+        if (stage == null) {
+            System.out.println("Attention : un Stage null a été fourni à setStage.");
+        }
+        this.stage = stage;
+        System.out.println("Stage défini avec succès.");
+    }
 
     public void setFilmData(Film film) {
         this.selectedFilm = film;
         titleInput.setText(film.getTitre());
         directorInput.setText(film.getRealisateur());
         yearInput.setText("" + film.getDateSortie());
-        visionneParUtilisateurInput.setText("Visionné par l'utilisateur: " + (film.getVisionneParUtilisateur() ? "Oui" : "Non"));
+        visionneParUtilisateurInput.setText((film.getVisionneParUtilisateur() ? "Oui" : "Non"));
         noteInput.setText("" + film.getNote());
         actorsInput.setText(String.join(", ", film.getActeurs()));
         summaryInput.setText(film.getSummary());
@@ -76,25 +95,65 @@ public class ModalController {
             System.out.println("Modification de: " + selectedFilm.getTitre());
             setEditable(true);
             modifier.setText("Sauvegarder");
-        } else{
+        } else {
             saveFilmDetails();
             modifier.setText("Modifier");
+        }
+    }
+    @FXML
+    private void supprimerFilm() throws IOException {
+        if (selectedFilm != null) {
+            int index = selectedFilm.getId();
+            areYouSureShowModal(index);
+            stage.close();
+        }
+    }
+    @FXML
+    private void supprimerFilmAction() {
+        if (stage == null) {
+            System.out.println("Erreur: Stage non initialisé.");
+            return;
+        }
+        if (selectedFilm != null) {
+            FilmController.supprimerFilm(selectedFilm.getId());
+            stage.close();
+        } else {
+            System.out.println("Erreur dans la suppression, selectedFilm : " + selectedFilm);
         }
     }
 
     @FXML
     private void saveFilmDetails() {
-        selectedFilm.setTitre(titleInput.getText());
-        selectedFilm.setRealisateur(directorInput.getText());
-        selectedFilm.setDateSortie(Integer.parseInt(yearInput.getText()));
-        selectedFilm.setSummary(summaryInput.getText());
-        selectedFilm.setVisionneParUtilisateur(visionneParUtilisateurInput.getText().equals("Oui"));
-        selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
-        selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
+        try {
+            selectedFilm.setTitre(titleInput.getText());
+            selectedFilm.setRealisateur(directorInput.getText());
+            selectedFilm.setDateSortie(Integer.parseInt(yearInput.getText()));
+            selectedFilm.setSummary(summaryInput.getText());
+            selectedFilm.setVisionneParUtilisateur(visionneParUtilisateurInput.getText().equals("Oui"));
+            selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
+            selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
 
-        JSONArray filmData = FilmController.getFilms(); // Reload the current films
-        setEditable(false); // Turn off edit mode after saving
-        updateFields(); // Update fields to reflect saved data
-        FilmController.saveFilms(filmData);
+            FilmController.setFilm(selectedFilm.getId(), selectedFilm);
+            setEditable(false);
+            updateFields();
+        } catch (NumberFormatException e) {
+            System.out.println("erreur!");
+        }
+    }
+
+    public void areYouSureShowModal(int index) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("areYouSurePanel.fxml"));
+        VBox root = loader.load();
+
+        Stage modalStage = new Stage();
+        modalStage.setTitle("Êtes-vous sûr ?");
+        modalStage.initModality(Modality.APPLICATION_MODAL);
+        modalStage.initOwner(stage.getScene().getWindow());  // Utilise `stage` qui doit être le stage principal
+        Scene scene = new Scene(root, 400, 200);
+        modalStage.setScene(scene);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        setStage(modalStage);
+
+        modalStage.showAndWait();
     }
 }

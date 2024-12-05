@@ -20,7 +20,7 @@
         <TextArea fx:id="summaryInput" wrapText="true" editable="false" styleClass="label text-area-mod" prefRowCount="8"/>
         <HBox spacing="10" alignment="CENTER">
             <Button fx:id="modifier" text="Modifier" onAction="#modifierFilm" styleClass="btn-primary"/>
-            <Button text="Supprimer" styleClass="btn-danger"/>
+            <Button text="Supprimer" styleClass="btn-danger" onAction="#supprimerFilm"/>
         </HBox>
     </children>
 </VBox>

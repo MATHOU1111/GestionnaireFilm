@@ -3,8 +3,6 @@ package fr.com.gestionnairefilms;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -36,7 +34,6 @@ public class HelloController {
         tableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
                 Film selectedFilm = tableView.getSelectionModel().getSelectedItem();
-                System.out.println(selectedFilm);
                 try {
                     showFilmDetails(selectedFilm);
                 } catch (IOException e) {
@@ -46,24 +43,22 @@ public class HelloController {
         });
     }
 
-
     public void showFilmDetails(Film selectedFilm) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModalWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(ModalController.class.getResource("ModalWindow.fxml"));
         VBox root = loader.load();
         ModalController controller = loader.getController();
 
         Stage modalStage = new Stage();
+        controller.setStage(modalStage);  // Passez l'instance du Stage au contrôleur
+
         modalStage.setTitle("Détails du Film");
         modalStage.initModality(Modality.APPLICATION_MODAL);
         modalStage.initOwner(tableView.getScene().getWindow());
-
         Scene scene = new Scene(root, 600, 600);
         modalStage.setScene(scene);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         controller.setFilmData(selectedFilm);
-
         modalStage.showAndWait();
-
     }
 
     private void loadFilms() {
@@ -87,10 +82,12 @@ public class HelloController {
                 List<String> acteurs = (List<String>) filmJson.get("actors");
                 String summary = (String) filmJson.get("summary");
 
-                films.add(new Film(titre, note, dateSortie, visionneParUtilisateur, acteurs, realisateur, summary));
+                Long id = (Long) filmJson.get("id");
+                int idInt = id.intValue();
+
+                films.add(new Film(titre, note, dateSortie, visionneParUtilisateur, acteurs, realisateur, summary, idInt));
             }
         }
-        System.out.println(tableView);
         tableView.setItems(films);
     }
 
