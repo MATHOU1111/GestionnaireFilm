@@ -28,7 +28,7 @@ public class FilmController {
         return data;
     }
 
-    // Saves the updated JSONArray back to the file
+    // Sauvegarde le JSONArray dans le fichier data.json
     public static void saveFilms(JSONArray filmData) {
         try (FileWriter file = new FileWriter(DATA_PATH)) {
             file.write(filmData.toJSONString());
@@ -39,6 +39,7 @@ public class FilmController {
         }
     }
 
+    // convertir en json le film donné
     public static JSONObject convertToJsonObject(Film film) {
         JSONObject json = new JSONObject();
         json.put("id", film.getId());
@@ -53,6 +54,7 @@ public class FilmController {
     }
 
 
+    // Methode pour mettre à jour le film côté data.json
     public static void setFilm(int index, Film object) {
         JSONArray films = getFilms();
         if (films == null) {
@@ -65,17 +67,42 @@ public class FilmController {
         saveFilms(films);
     }
 
-    public static void supprimerFilm(int index) {
+    // Methode de suppression d'un film dans le json
+    public static void supprimerFilm(String titre) {
         JSONArray films = getFilms();
         if (films == null) {
             System.err.println("Erreur lors du chargement des films.");
             return;
         }
-        System.out.println("Suppression du film :" + films.get(index));
-        films.remove(index);
-
+        System.out.println("Suppression du film :" + titre);
+        int compteur = searchFilmInJson(titre);
+        System.out.println(compteur);
+        films.remove(compteur);
+        saveFilms(films);
     }
 
+    // Cette fonction va venir rechercher le film donné dans le JSONArray pour renvoyer son compteur et
+    // pouvoir faciliter sa suppression
+    static int searchFilmInJson(String titre) {
+        JSONArray films = getFilms();
+        int compteur = 0;
+        for (Object element : films) {
+            // typage verif
+            if (element instanceof JSONObject) {
+                JSONObject film = (JSONObject) element;
+                String filmTitle = (String) film.get("titre");
+
+                if (filmTitle != null && titre.equals(filmTitle)) {
+                    System.out.println("Film trouvé: " + film);
+                    // Retourne l'index du film trouvé
+                    return compteur;
+                }
+            }
+            compteur++;
+        }
+        System.out.println("Film non trouvé.");
+        return -1;
+    }
     public static void main(String[] args) {
         JSONArray filmsData = getFilms();
         if (filmsData != null) {

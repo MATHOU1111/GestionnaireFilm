@@ -15,6 +15,8 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static fr.com.gestionnairefilms.FilmController.searchFilmInJson;
+
 public class ModalController {
     private static Stage stage;
 
@@ -115,7 +117,7 @@ public class ModalController {
             return;
         }
         if (selectedFilm != null) {
-            FilmController.supprimerFilm(selectedFilm.getId());
+            FilmController.supprimerFilm(selectedFilm.getTitre());
             stage.close();
         } else {
             System.out.println("Erreur dans la suppression, selectedFilm : " + selectedFilm);
@@ -132,8 +134,7 @@ public class ModalController {
             selectedFilm.setVisionneParUtilisateur(visionneParUtilisateurInput.getText().equals("Oui"));
             selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
             selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
-
-            FilmController.setFilm(selectedFilm.getId(), selectedFilm);
+            FilmController.setFilm(searchFilmInJson(selectedFilm.getTitre()), selectedFilm);
             setEditable(false);
             updateFields();
         } catch (NumberFormatException e) {
@@ -148,10 +149,11 @@ public class ModalController {
         Stage modalStage = new Stage();
         modalStage.setTitle("Êtes-vous sûr ?");
         modalStage.initModality(Modality.APPLICATION_MODAL);
-        modalStage.initOwner(stage.getScene().getWindow());  // Utilise `stage` qui doit être le stage principal
+        modalStage.initOwner(stage.getScene().getWindow());
         Scene scene = new Scene(root, 400, 200);
         modalStage.setScene(scene);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        // Ne pas oublier de set le stage pour pouvoir fermer la modale
         setStage(modalStage);
 
         modalStage.showAndWait();
