@@ -25,14 +25,14 @@
         <Text styleClass="title-text" text="GESTIONNAIRE DE FILMS" />
         <Region HBox.hgrow="ALWAYS" />
     </HBox>
-    <TableView fx:id="tableView" prefHeight="562.0" prefWidth="600">
+    <TableView fx:id="tableView" prefHeight="562.0" prefWidth="600" styleClass="table, table-striped">
         <columns>
-            <TableColumn fx:id="filmColumn" prefWidth="106.4000301361084" text="Film">
+            <TableColumn fx:id="filmColumn" prefWidth="216.4000301361084" text="Film">
                 <cellValueFactory>
                     <PropertyValueFactory property="titre" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="ratingColumn" prefWidth="96.0" text="Note">
+            <TableColumn fx:id="ratingColumn" prefWidth="56.0" text="Note">
                 <cellValueFactory>
                     <PropertyValueFactory property="note" />
                 </cellValueFactory>
@@ -42,17 +42,17 @@
                     <PropertyValueFactory property="dateSortie" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="visionneColumn" prefWidth="100.79998779296875" text="Visionné">
+            <TableColumn fx:id="visionneColumn" prefWidth="70.79998779296875" text="Visionné">
                 <cellValueFactory>
                     <PropertyValueFactory property="visionneParUtilisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="realisateur" prefWidth="139.19998168945312" text="Réalisateur">
+            <TableColumn fx:id="realisateurColumn" prefWidth="229.19998168945312" text="Réalisateur">
                 <cellValueFactory>
                     <PropertyValueFactory property="realisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="actors" prefWidth="266.4000122070313" text="Acteurs principaux">
+            <TableColumn fx:id="actorsColumn" prefWidth="420.4000122070313" text="Acteurs principaux">
                 <cellValueFactory>
                     <PropertyValueFactory property="acteurs" />
                 </cellValueFactory>
