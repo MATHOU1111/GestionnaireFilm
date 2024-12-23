@@ -6,10 +6,11 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class FilmController {
 
-    private static final String DATA_PATH = "C:\\workflow\\ESGI3\\GestionnaireFilms\\src\\main\\resources\\data\\data.json";
+    private static final String DATA_PATH = "C:\\Workflow\\GestionnaireFilm\\src\\main\\resources\\data\\data.json";
 
     // Retourne un JSONARRAY des éléments de data.json
     public static JSONArray getFilms() {
@@ -55,16 +56,41 @@ public class FilmController {
 
 
     // Methode pour mettre à jour le film côté data.json
-    public static void setFilm(int index, Film object) {
-        JSONArray films = getFilms();
+    public static void setFilm(int id, Film object) {
+        JSONArray films = getFilms(); // Charger les films existants
         if (films == null) {
             System.err.println("Erreur lors du chargement des films.");
             return;
         }
+
+        // Convertir le film en JSONObject
         JSONObject filmJson = convertToJsonObject(object);
-        films.set(index, filmJson);
-        System.out.println(filmJson.toJSONString());
+
+        // Rechercher le film à mettre à jour par ID
+        boolean filmUpdated = false;
+        for (int i = 0; i < films.size(); i++) {
+            Object element = films.get(i);
+            if (element instanceof JSONObject film) {
+
+                // Vérifier si l'ID correspond
+                Object filmIdObj = film.get("id");
+                if (filmIdObj != null && Integer.parseInt(filmIdObj.toString()) == id) {
+                    // Remplacer l'élément existant
+                    films.set(i, filmJson);
+                    filmUpdated = true;
+                    break;
+                }
+            }
+        }
+
+        if (!filmUpdated) {
+            System.err.println("Film avec l'ID " + id + " introuvable pour mise à jour.");
+            return;
+        }
+
+        // Sauvegarder les films mis à jour
         saveFilms(films);
+        System.out.println("Film mis à jour : " + filmJson.toJSONString());
     }
 
     // Methode de suppression d'un film dans le json
@@ -75,34 +101,37 @@ public class FilmController {
             return;
         }
         System.out.println("Suppression du film :" + titre);
-        int compteur = searchFilmInJson(titre);
+        int compteur = Integer.parseInt(Objects.requireNonNull(searchFilmInJson(titre)));
         System.out.println(compteur);
         films.remove(compteur);
         saveFilms(films);
     }
 
-    // Cette fonction va venir rechercher le film donné dans le JSONArray pour renvoyer son compteur et
-    // pouvoir faciliter sa suppression
-    static int searchFilmInJson(String titre) {
-        JSONArray films = getFilms();
-        int compteur = 0;
-        for (Object element : films) {
-            // typage verif
-            if (element instanceof JSONObject) {
-                JSONObject film = (JSONObject) element;
-                String filmTitle = (String) film.get("titre");
+    // Cette fonction va venir rechercher le film donné dans le JSONArray pour renvoyer son compteur
+    static String searchFilmInJson(String id) {
+        JSONArray films = getFilms(); // Charge la liste des films
 
-                if (filmTitle != null && titre.equals(filmTitle)) {
-                    System.out.println("Film trouvé: " + film);
-                    // Retourne l'index du film trouvé
-                    return compteur;
+        for (Object element : films) {
+            if (element instanceof JSONObject film) {
+
+                // Récupération de l'ID en tant que String pour éviter les erreurs de type
+                Object filmIdObj = film.get("id");
+                if (filmIdObj != null) {
+                    String filmId = filmIdObj.toString(); // Convertir l'ID en chaîne de caractères
+
+                    if (filmId.equals(id)) {
+                        System.out.println("Film trouvé: " + film);
+                        return filmId; // Retourne l'ID trouvé
+                    }
                 }
             }
-            compteur++;
         }
+
         System.out.println("Film non trouvé.");
-        return -1;
+        return null; // Retourne null si aucun film n'est trouvé
     }
+
+
     public static void main(String[] args) {
         JSONArray filmsData = getFilms();
         if (filmsData != null) {

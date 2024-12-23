@@ -13,7 +13,7 @@ public class Film {
     private String realisateur;  // Director
     private String summary;
 
-    private int id;
+    private final int id;
 
     public Film(String titre, int note, Integer dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur, String summary, int id) {
         this.titre = titre;

@@ -1,0 +1,20 @@
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fr.com.gestionnairefilms.ModalController" spacing="10" alignment="CENTER">
+    <TextField fx:id="titleInput" promptText="Titre du film" />
+    <TextField fx:id="directorInput" promptText="Réalisateur" />
+    <TextField fx:id="yearInput" promptText="Année de sortie" />
+    <TextArea fx:id="summaryInput" promptText="Résumé" />
+    <TextField fx:id="visionneParUtilisateurInput" promptText="Visionné (Oui/Non)" />
+    <TextField fx:id="noteInput" promptText="Note (1-10)" />
+    <TextField fx:id="actorsInput" promptText="Acteurs (séparés par des virgules)" />
+    <HBox spacing="10">
+        <Button text="Ajouter" onAction="#ajouterFilmAction" />
+        <Button text="Annuler" onAction="#annulerAjoutFilm" />
+    </HBox>
+</VBox>
