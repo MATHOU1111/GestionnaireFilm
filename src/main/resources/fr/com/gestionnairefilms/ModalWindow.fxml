@@ -2,6 +2,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
@@ -13,7 +14,7 @@
     <children>
         <TextField fx:id="titleInput" editable="false" styleClass="label-header"/>
         <TextField fx:id="directorInput" editable="false" styleClass="label"/>
-        <TextField fx:id="yearInput" editable="false" styleClass="label"/>
+        <DatePicker fx:id="dateSortie" editable="false" styleClass="label"/>
         <TextField fx:id="visionneParUtilisateurInput" editable="false" styleClass="label"/>
         <TextField fx:id="noteInput" editable="false" styleClass="label"/>
         <TextField fx:id="actorsInput" editable="false" styleClass="label"/>

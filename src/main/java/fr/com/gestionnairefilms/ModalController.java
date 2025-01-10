@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -15,14 +16,14 @@ import org.json.simple.JSONArray;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static fr.com.gestionnairefilms.FilmController.searchFilmInJson;
+import java.util.Date;
 
 public class ModalController {
     private static Stage stage;
-    private ObservableList<Film> filmsList; // Référence à la liste des films dans le TableView
+    private ObservableList<Film> filmsList;
     private Film selectedFilm;
 
     @FXML
@@ -30,9 +31,6 @@ public class ModalController {
 
     @FXML
     private TextField directorInput;
-
-    @FXML
-    private TextField yearInput;
 
     @FXML
     private TextArea summaryInput;
@@ -49,11 +47,9 @@ public class ModalController {
     @FXML
     private Button modifier;
 
-    @FXML
-    private Button confirmButton;
 
     @FXML
-    private Button cancelButton;
+    private DatePicker dateSortie; // Remplace TextField par DatePicker
 
     public void setStage(Stage stage) {
         if (stage == null) {
@@ -64,24 +60,27 @@ public class ModalController {
     }
 
     public void setFilmsList(ObservableList<Film> filmsList) {
-        this.filmsList = filmsList; // Référence à la liste des films
+        this.filmsList = filmsList;
     }
 
     public void setFilmData(Film film) {
         selectedFilm = film;
         titleInput.setText(film.getTitre());
         directorInput.setText(film.getRealisateur());
-        yearInput.setText("" + film.getDateSortie());
-        visionneParUtilisateurInput.setText((film.getVisionneParUtilisateur() ? "Oui" : "Non"));
-        noteInput.setText("" + film.getNote());
+
+        dateSortie.setValue(film.getDateSortie());
+
+        visionneParUtilisateurInput.setText(film.getVisionneParUtilisateur() ? "Oui" : "Non");
+        noteInput.setText(String.valueOf(film.getNote()));
         actorsInput.setText(String.join(", ", film.getActeurs()));
         summaryInput.setText(film.getSummary());
     }
 
+
     private void setEditable(boolean editable) {
         titleInput.setEditable(editable);
         directorInput.setEditable(editable);
-        yearInput.setEditable(editable);
+        dateSortie.setEditable(editable);
         summaryInput.setEditable(editable);
         visionneParUtilisateurInput.setEditable(editable);
         noteInput.setEditable(editable);
@@ -91,7 +90,7 @@ public class ModalController {
     private void updateFields() {
         titleInput.setText(selectedFilm.getTitre());
         directorInput.setText(selectedFilm.getRealisateur());
-        yearInput.setText(String.valueOf(selectedFilm.getDateSortie()));
+        dateSortie.setValue(selectedFilm.getDateSortie());
         summaryInput.setText(selectedFilm.getSummary());
         visionneParUtilisateurInput.setText(selectedFilm.getVisionneParUtilisateur() ? "Oui" : "Non");
         noteInput.setText(String.valueOf(selectedFilm.getNote()));
@@ -141,11 +140,13 @@ public class ModalController {
             // Mettre à jour les détails du film
             selectedFilm.setTitre(titleInput.getText());
             selectedFilm.setRealisateur(directorInput.getText());
-            selectedFilm.setDateSortie(Integer.parseInt(yearInput.getText()));
             selectedFilm.setSummary(summaryInput.getText());
             selectedFilm.setVisionneParUtilisateur(visionneParUtilisateurInput.getText().equals("Oui"));
             selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
             selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
+            selectedFilm.setDateSortie(Film.parseDate(String.valueOf(dateSortie), "yyyy-MMMM-dd", "dd/MM/yyyy"));
+
+
 
             // Mise à jour dans le fichier JSON
             int index = Integer.parseInt(FilmController.searchFilmInJson(String.valueOf(selectedFilm.getId())));
@@ -187,20 +188,22 @@ public class ModalController {
     @FXML
     private void ajouterFilmAction() {
         try {
-            // Valider les entrées utilisateur
-            if (titleInput.getText().isEmpty() || directorInput.getText().isEmpty() || yearInput.getText().isEmpty() || noteInput.getText().isEmpty()) {
+            // on évite les erreurs à la con
+            if (titleInput.getText().isEmpty() || directorInput.getText().isEmpty()  || noteInput.getText().isEmpty()) {
                 System.out.println("Tous les champs obligatoires doivent être remplis.");
                 return;
             }
 
-            // Convertir la liste des acteurs en ArrayList explicite
+            // Convertir liste acteurs en AL
             ArrayList<String> acteurs = new ArrayList<>(Arrays.asList(actorsInput.getText().split(", ")));
 
-            // Créer un nouvel objet Film
+            // convertir l'entrée en Date
+            LocalDate date = Film.parseDate(String.valueOf(dateSortie), "yyyy-MMMM-dd", "dd/MM/yyyy"); // Format attendu
+
             Film newFilm = new Film(
                     titleInput.getText(),
                     Integer.parseInt(noteInput.getText()),
-                    Integer.parseInt(yearInput.getText()),
+                    date, // Utilise l'objet Date
                     visionneParUtilisateurInput.getText().equalsIgnoreCase("Oui"),
                     acteurs, // Utilise la conversion explicite ici
                     directorInput.getText(),
@@ -208,7 +211,6 @@ public class ModalController {
                     generateUniqueId()
             );
 
-            // Ajouter le film à la liste observable
             if (filmsList != null) {
                 filmsList.add(newFilm);
             }
@@ -218,7 +220,7 @@ public class ModalController {
             films.add(FilmController.convertToJsonObject(newFilm));
             FilmController.saveFilms(films);
 
-            // Fermer la fenêtre
+            // Fermer la fenêtre (important)
             stage.close();
         } catch (NumberFormatException e) {
             System.out.println("Erreur : Veuillez entrer des données valides. " + e.getMessage());

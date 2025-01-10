@@ -17,6 +17,8 @@ public class HelloApplication extends Application {
         stage.setTitle("Gestionnaire");
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     public static void main(String[] args) {

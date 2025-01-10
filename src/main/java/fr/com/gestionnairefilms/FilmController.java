@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class FilmController {
 
-    private static final String DATA_PATH = "C:\\Workflow\\GestionnaireFilm\\src\\main\\resources\\data\\data.json";
+    private static final String DATA_PATH = "C:\\workflow\\ESGI3\\GestionnaireFilms\\src\\main\\resources\\data\\data.json";
 
     // Retourne un JSONARRAY des éléments de data.json
     public static JSONArray getFilms() {

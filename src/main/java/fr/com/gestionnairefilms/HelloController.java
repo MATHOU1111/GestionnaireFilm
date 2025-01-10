@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
@@ -19,9 +20,13 @@ import org.json.simple.JSONObject;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import java.util.List;
 
-import static fr.com.gestionnairefilms.FilmController.getFilms;
 
 
 public class HelloController {
@@ -37,7 +42,7 @@ public class HelloController {
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws ParseException {
         loadFilms();
 
         // Ajouter un écouteur d'événements au TableVew
@@ -55,6 +60,7 @@ public class HelloController {
         setupSearchBar();
     }
 
+    // Apparition de la modale avec les données
     public void showFilmDetails(Film selectedFilm) throws IOException {
         FXMLLoader loader = new FXMLLoader(ModalController.class.getResource("ModalWindow.fxml"));
         VBox root = loader.load();
@@ -86,8 +92,21 @@ public class HelloController {
                 String titre = (String) filmJson.get("titre");
                 Long noteLong = (Long) filmJson.get("note");
                 int note = noteLong.intValue();
-                Long dateLong = (Long) filmJson.get("year");
-                int dateSortie = dateLong.intValue();
+
+                // Convertir la chaîne en LocalDate
+                String dateString = (String) filmJson.get("dateSortie");
+                LocalDate date = null;
+                if (dateString != null) {
+                    try {
+                        // Updated formatter to match "yyyy-MM-dd"
+                        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        System.out.println("dateString : " + dateString);
+                        date = LocalDate.parse(dateString, dateFormat);
+                    } catch (DateTimeParseException e) {
+                        System.out.println("Erreur de conversion de la date : " + e.getMessage());
+                    }
+                }
+
 
                 boolean visionneParUtilisateur = (boolean) filmJson.get("visionneParUtilisateur");
                 String realisateur = (String) filmJson.get("director");
@@ -97,12 +116,11 @@ public class HelloController {
                 Long id = (Long) filmJson.get("id");
                 int idInt = id.intValue();
 
-                films.add(new Film(titre, note, dateSortie, visionneParUtilisateur, acteurs, realisateur, summary, idInt));
+                films.add(new Film(titre, note, date, visionneParUtilisateur, acteurs, realisateur, summary, idInt));
             }
         }
 
         // Configure la liste filtrée
-
         // Affiche tous les films par défaut
         filteredFilms = new FilteredList<>(films, b -> true);
         // Lie la liste filtrée au TableView
@@ -147,6 +165,7 @@ public class HelloController {
             });
         });
     }
+
 }
 
 
