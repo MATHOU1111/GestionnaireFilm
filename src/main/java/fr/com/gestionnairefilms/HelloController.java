@@ -4,11 +4,9 @@ package fr.com.gestionnairefilms;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
@@ -106,8 +104,6 @@ public class HelloController {
                         System.out.println("Erreur de conversion de la date : " + e.getMessage());
                     }
                 }
-
-
                 boolean visionneParUtilisateur = (boolean) filmJson.get("visionneParUtilisateur");
                 String realisateur = (String) filmJson.get("director");
                 List<String> acteurs = (List<String>) filmJson.get("actors");

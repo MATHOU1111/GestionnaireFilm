@@ -102,29 +102,6 @@ public class Film {
 
     }
 
-    public static LocalDate parseDate(String dateText, String inputFormat, String outputFormat) {
-        if (dateText == null || dateText.isEmpty()) {
-            return null;
-        }
-        try {
-            // Création des formateurs pour les formats d'entrée et de sortie
-            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern(inputFormat, Locale.FRENCH);
-            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(outputFormat, Locale.FRENCH);
-
-            // Parse la chaîne en LocalDate selon le format d'entrée
-            LocalDate parsedDate = LocalDate.parse(dateText, inputFormatter);
-
-            // Reformate la date selon le format de sortie (retourne toujours un LocalDate)
-            String reformattedDate = parsedDate.format(outputFormatter);
-
-            // Reconvertit la date reformattée en LocalDate
-            return LocalDate.parse(reformattedDate, outputFormatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Erreur de formatage : " + e.getMessage());
-            return null;
-        }
-    }
-
 }
 
 

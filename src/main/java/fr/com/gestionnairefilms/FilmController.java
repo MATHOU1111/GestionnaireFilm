@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class FilmController {
 
@@ -42,14 +44,19 @@ public class FilmController {
 
     // convertir en json le film donné
     public static JSONObject convertToJsonObject(Film film) {
+
         JSONObject json = new JSONObject();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dateSortieString = film.getDateSortie().format(formatter);
+
         json.put("id", film.getId());
         json.put("titre", film.getTitre());
         json.put("summary", film.getSummary());
         json.put("actors", film.getActeurs());
         json.put("note", film.getNote());
         json.put("visionneParUtilisateur", film.getVisionneParUtilisateur());
-        json.put("year", film.getDateSortie());
+        json.put("dateSortie",dateSortieString);
         json.put("director", film.getRealisateur());
         return json;
     }

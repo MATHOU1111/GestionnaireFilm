@@ -49,7 +49,7 @@ public class ModalController {
 
 
     @FXML
-    private DatePicker dateSortie; // Remplace TextField par DatePicker
+    private DatePicker dateSortie;
 
     public void setStage(Stage stage) {
         if (stage == null) {
@@ -107,6 +107,7 @@ public class ModalController {
             saveFilmDetails();
             modifier.setText("Modifier");
         }
+        System.out.println(dateSortie.getValue());
     }
 
     @FXML
@@ -144,8 +145,7 @@ public class ModalController {
             selectedFilm.setVisionneParUtilisateur(visionneParUtilisateurInput.getText().equals("Oui"));
             selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
             selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
-            selectedFilm.setDateSortie(Film.parseDate(String.valueOf(dateSortie), "yyyy-MMMM-dd", "dd/MM/yyyy"));
-
+            selectedFilm.setDateSortie(dateSortie.getValue());
 
 
             // Mise à jour dans le fichier JSON
@@ -197,8 +197,8 @@ public class ModalController {
             // Convertir liste acteurs en AL
             ArrayList<String> acteurs = new ArrayList<>(Arrays.asList(actorsInput.getText().split(", ")));
 
-            // convertir l'entrée en Date
-            LocalDate date = Film.parseDate(String.valueOf(dateSortie), "yyyy-MMMM-dd", "dd/MM/yyyy"); // Format attendu
+            // convertir l'entrée en localDate
+            LocalDate date = dateSortie.getValue();
 
             Film newFilm = new Film(
                     titleInput.getText(),
