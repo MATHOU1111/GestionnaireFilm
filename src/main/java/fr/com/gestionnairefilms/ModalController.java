@@ -4,10 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,6 +49,17 @@ public class ModalController {
 
     @FXML
     private DatePicker dateSortie;
+
+    @FXML
+    private ComboBox<Genre> genreComboBox;
+
+    @FXML
+    public void initialize() {
+        // c'est dingue les enums quand même
+        if(genreComboBox != null){
+            genreComboBox.getItems().addAll(Genre.values());
+        }
+    }
 
     public void setStage(Stage stage) {
         if (stage == null) {
@@ -215,7 +223,7 @@ public class ModalController {
                     directorInput.getText(),
                     summaryInput.getText(),
                     generateUniqueId(),
-                    Genre.valueOf(genre.getText())
+                    Genre.valueOf(String.valueOf(genreComboBox.getValue()))
             );
 
             if (filmsList != null) {
