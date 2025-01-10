@@ -127,7 +127,6 @@ public class ModalController {
     private void supprimerFilm() throws IOException {
         if (selectedFilm != null) {
             areYouSureShowModal();
-            stage.close();
         }
     }
 
@@ -137,6 +136,7 @@ public class ModalController {
             System.out.println("Erreur: Stage non initialisé.");
             return;
         }
+        System.out.println(selectedFilm);
         if (selectedFilm != null) {
             FilmController.supprimerFilm(selectedFilm.getTitre());
             if (filmsList != null) {
@@ -195,7 +195,6 @@ public class ModalController {
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         // Ne pas oublier de set le stage pour pouvoir fermer la modale
         setStage(modalStage);
-
         modalStage.showAndWait();
     }
 
