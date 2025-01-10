@@ -18,6 +18,7 @@
         <TextField fx:id="visionneParUtilisateurInput" editable="false" styleClass="label"/>
         <TextField fx:id="noteInput" editable="false" styleClass="label"/>
         <TextField fx:id="actorsInput" editable="false" styleClass="label"/>
+        <TextField fx:id="genre" editable="false" styleClass="label"/>
         <TextArea fx:id="summaryInput" wrapText="true" editable="false" styleClass="label text-area-mod" prefRowCount="8"/>
         <HBox spacing="10" alignment="CENTER">
             <Button text="Supprimer" styleClass="btn-danger" onAction="#supprimerFilm"/>

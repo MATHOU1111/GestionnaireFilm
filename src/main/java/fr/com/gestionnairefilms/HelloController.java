@@ -108,11 +108,12 @@ public class HelloController {
                 String realisateur = (String) filmJson.get("director");
                 List<String> acteurs = (List<String>) filmJson.get("actors");
                 String summary = (String) filmJson.get("summary");
+                Genre genre = Genre.valueOf((String) filmJson.get("genre"));
 
                 Long id = (Long) filmJson.get("id");
                 int idInt = id.intValue();
 
-                films.add(new Film(titre, note, date, visionneParUtilisateur, acteurs, realisateur, summary, idInt));
+                films.add(new Film(titre, note, date, visionneParUtilisateur, acteurs, realisateur, summary, idInt, genre));
             }
         }
 
@@ -149,7 +150,6 @@ public class HelloController {
         // Ajoute un listener pour filtrer les films à chaque modification de texte
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredFilms.setPredicate(film -> {
-                // Si la barre de recherche est vide, afficher tous les films
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }

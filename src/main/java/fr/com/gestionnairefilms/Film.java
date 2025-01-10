@@ -20,9 +20,11 @@ public class Film {
     private String realisateur;  // Director
     private String summary;
 
+    private Genre genre;
+
     private final int id;
 
-    public Film(String titre, int note, LocalDate dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur, String summary, int id) {
+    public Film(String titre, int note, LocalDate dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur, String summary, int id, Genre genre) {
         this.titre = titre;
         this.note = note;
         this.dateSortie = dateSortie;
@@ -31,6 +33,7 @@ public class Film {
         this.realisateur = realisateur;
         this.summary = summary;
         this.id = id;
+        this.genre = genre;
     }
     public String getTitre() {
         return titre;
@@ -90,16 +93,24 @@ public class Film {
         this.summary = summary;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "titre='" + titre + '\'' +
                 ", note=" + note +
                 ", dateSortie=" + dateSortie +
                 ", visionneParUtilisateur=" + visionneParUtilisateur +
                 ", acteurs=" + acteurs +
                 ", realisateur='" + realisateur + '\'' +
-                ",summary='" + summary + '\'';
-
+                ", summary='" + summary + '\'' +
+                ", genre=" + genre;
     }
 
 }

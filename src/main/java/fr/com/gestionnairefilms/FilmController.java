@@ -58,6 +58,7 @@ public class FilmController {
         json.put("visionneParUtilisateur", film.getVisionneParUtilisateur());
         json.put("dateSortie",dateSortieString);
         json.put("director", film.getRealisateur());
+        json.put("genre", film.getGenre().toString());
         return json;
     }
 

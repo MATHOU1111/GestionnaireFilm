@@ -29,34 +29,39 @@
     </HBox>
     <Button text="Ajouter un film" onAction="#ajouterFilm" />
     <TextField fx:id="searchBar" promptText="Rechercher un film..." />
-    <TableView fx:id="tableView" prefHeight="562.0" prefWidth="600" styleClass="table, table-striped">
+    <TableView fx:id="tableView" prefHeight="562" prefWidth="600" styleClass="table, table-striped">
         <columns>
-            <TableColumn fx:id="filmColumn" prefWidth="216.4000301361084" text="Film">
+            <TableColumn fx:id="filmColumn" prefWidth="216" text="Film">
                 <cellValueFactory>
                     <PropertyValueFactory property="titre" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="ratingColumn" prefWidth="56.0" text="Note">
+            <TableColumn fx:id="ratingColumn" prefWidth="60" text="Note">
                 <cellValueFactory>
                     <PropertyValueFactory property="note" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="dateSortieColumn" prefWidth="147.199951171875" text="Date de Sortie">
+            <TableColumn fx:id="dateSortieColumn" prefWidth="147" text="Date de Sortie">
                 <cellValueFactory>
                     <PropertyValueFactory property="dateSortie" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="visionneColumn" prefWidth="70.79998779296875" text="Visionné">
+            <TableColumn fx:id="visionneColumn" prefWidth="100" text="Visionné">
                 <cellValueFactory>
                     <PropertyValueFactory property="visionneParUtilisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="realisateurColumn" prefWidth="229.19998168945312" text="Réalisateur">
+            <TableColumn fx:id="realisateurColumn" prefWidth="220" text="Réalisateur">
                 <cellValueFactory>
                     <PropertyValueFactory property="realisateur" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="actorsColumn" prefWidth="420.4000122070313" text="Acteurs principaux">
+            <TableColumn fx:id="genre" prefWidth="200" text="Genre">
+                <cellValueFactory>
+                    <PropertyValueFactory property="genre" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="actorsColumn" prefWidth="420" text="Acteurs principaux">
                 <cellValueFactory>
                     <PropertyValueFactory property="acteurs" />
                 </cellValueFactory>

@@ -45,8 +45,10 @@ public class ModalController {
     private TextField actorsInput;
 
     @FXML
-    private Button modifier;
+    private TextField genre;
 
+    @FXML
+    private Button modifier;
 
     @FXML
     private DatePicker dateSortie;
@@ -74,6 +76,7 @@ public class ModalController {
         noteInput.setText(String.valueOf(film.getNote()));
         actorsInput.setText(String.join(", ", film.getActeurs()));
         summaryInput.setText(film.getSummary());
+        genre.setText(film.getGenre().toString());
     }
 
 
@@ -85,6 +88,7 @@ public class ModalController {
         visionneParUtilisateurInput.setEditable(editable);
         noteInput.setEditable(editable);
         actorsInput.setEditable(editable);
+        genre.setEditable(editable);
     }
 
     private void updateFields() {
@@ -95,6 +99,7 @@ public class ModalController {
         visionneParUtilisateurInput.setText(selectedFilm.getVisionneParUtilisateur() ? "Oui" : "Non");
         noteInput.setText(String.valueOf(selectedFilm.getNote()));
         actorsInput.setText(String.join(", ", selectedFilm.getActeurs()));
+        genre.setText(selectedFilm.getGenre().toString());
     }
 
     @FXML
@@ -146,6 +151,7 @@ public class ModalController {
             selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
             selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
             selectedFilm.setDateSortie(dateSortie.getValue());
+            selectedFilm.setGenre(Genre.valueOf(genre.getText()));
 
 
             // Mise à jour dans le fichier JSON
@@ -208,7 +214,8 @@ public class ModalController {
                     acteurs, // Utilise la conversion explicite ici
                     directorInput.getText(),
                     summaryInput.getText(),
-                    generateUniqueId()
+                    generateUniqueId(),
+                    Genre.valueOf(genre.getText())
             );
 
             if (filmsList != null) {
