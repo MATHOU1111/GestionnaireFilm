@@ -8,15 +8,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.json.JSONObject;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+
+import static fr.com.gestionnairefilms.FilmController.getFilms;
 
 public class ModalController {
     private static Stage stage;
@@ -76,13 +77,12 @@ public class ModalController {
         this.filmsList = filmsList;
     }
 
+    // Insérer les données dans selectedFilm pour la modale
     public void setFilmData(Film film) {
         selectedFilm = film;
         titleInput.setText(film.getTitre());
         directorInput.setText(film.getRealisateur());
-
         dateSortie.setValue(film.getDateSortie());
-
         visionneParUtilisateurInput.setText(film.getVisionneParUtilisateur() ? "Oui" : "Non");
         noteInput.setText(String.valueOf(film.getNote()));
         actorsInput.setText(String.join(", ", film.getActeurs()));
@@ -91,6 +91,8 @@ public class ModalController {
     }
 
 
+    // Action lorsqu'on appuie sur le bouton modifier de la modale
+    // Impossible d'utiliser un stream à cause de javaFX
     private void setEditable(boolean editable) {
         titleInput.setEditable(editable);
         directorInput.setEditable(editable);
@@ -103,6 +105,7 @@ public class ModalController {
         genrebox1.setEditable(editable);
     }
 
+    // On actualise les champs post modification
     private void updateFields() {
         titleInput.setText(selectedFilm.getTitre());
         directorInput.setText(selectedFilm.getRealisateur());
@@ -193,6 +196,8 @@ public class ModalController {
         }
     }
 
+
+    // Afficher une modale de confirmation
     public void areYouSureShowModal() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("areYouSurePanel.fxml"));
         VBox root = loader.load();
@@ -209,10 +214,11 @@ public class ModalController {
         modalStage.showAndWait();
     }
 
+
     @FXML
     private void ajouterFilmAction() {
         try {
-            // on évite les erreurs à la con
+            // on évite les erreurs à la con (à compléter)
             if (titleInput.getText().isEmpty() || directorInput.getText().isEmpty()  || noteInput.getText().isEmpty()) {
                 System.out.println("Tous les champs obligatoires doivent être remplis.");
                 return;
@@ -241,7 +247,7 @@ public class ModalController {
             }
 
             // Ajouter le film dans le fichier JSON
-            JSONArray films = FilmController.getFilms();
+            JSONArray films = getFilms();
             films.add(FilmController.convertToJsonObject(newFilm));
             FilmController.saveFilms(films);
 
@@ -254,10 +260,10 @@ public class ModalController {
 
     @FXML
     private void annulerAjoutFilm() {
-        stage.close(); // Ferme la modale sans ajouter de film
+        stage.close();
     }
 
-    // Générer un ID unique basé sur l'ID maximum existant
+    // Générer un ID unique basé sur l'ID maximum
     private int generateUniqueId() {
         JSONArray films = FilmController.getFilms();
         int maxId = films.stream()
@@ -268,3 +274,5 @@ public class ModalController {
         return maxId + 1;
     }
 }
+
+
