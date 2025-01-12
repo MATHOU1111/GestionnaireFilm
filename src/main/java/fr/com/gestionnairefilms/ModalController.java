@@ -42,13 +42,13 @@ public class ModalController {
     private TextField actorsInput;
 
     @FXML
-    private TextField genre;
-
-    @FXML
     private Button modifier;
 
     @FXML
     private DatePicker dateSortie;
+
+    @FXML
+    private ComboBox<Genre> genrebox1;
 
     @FXML
     private ComboBox<Genre> genreComboBox;
@@ -58,6 +58,9 @@ public class ModalController {
         // c'est dingue les enums quand même
         if(genreComboBox != null){
             genreComboBox.getItems().addAll(Genre.values());
+        }
+        if(genrebox1 != null){
+            genrebox1.getItems().addAll(Genre.values());
         }
     }
 
@@ -84,7 +87,7 @@ public class ModalController {
         noteInput.setText(String.valueOf(film.getNote()));
         actorsInput.setText(String.join(", ", film.getActeurs()));
         summaryInput.setText(film.getSummary());
-        genre.setText(film.getGenre().toString());
+        genrebox1.setValue(film.getGenre());
     }
 
 
@@ -96,7 +99,8 @@ public class ModalController {
         visionneParUtilisateurInput.setEditable(editable);
         noteInput.setEditable(editable);
         actorsInput.setEditable(editable);
-        genre.setEditable(editable);
+        dateSortie.setEditable(editable);
+        genrebox1.setEditable(editable);
     }
 
     private void updateFields() {
@@ -107,7 +111,7 @@ public class ModalController {
         visionneParUtilisateurInput.setText(selectedFilm.getVisionneParUtilisateur() ? "Oui" : "Non");
         noteInput.setText(String.valueOf(selectedFilm.getNote()));
         actorsInput.setText(String.join(", ", selectedFilm.getActeurs()));
-        genre.setText(selectedFilm.getGenre().toString());
+        genrebox1.setValue(selectedFilm.getGenre());
     }
 
     @FXML
@@ -159,7 +163,14 @@ public class ModalController {
             selectedFilm.setNote(Integer.parseInt(noteInput.getText()));
             selectedFilm.setActeurs(Arrays.asList(actorsInput.getText().split(", ")));
             selectedFilm.setDateSortie(dateSortie.getValue());
-            selectedFilm.setGenre(Genre.valueOf(genre.getText()));
+
+
+            // Je ne sais pas pourquoi, mais je suis obligé de faire ça sinon je me tape une erreur sur le genre
+            // genrebox1.getValue() renvoie un Genre mais si je l'assigne directement j'ai une erreur comme quoi c une string :-)
+            // Par conséquent qu'il en soit ainsi
+            String genreString = String.valueOf(genrebox1.getValue());
+            Genre genre = Genre.valueOf(genreString.toUpperCase());
+            selectedFilm.setGenre(genre);
 
 
             // Mise à jour dans le fichier JSON
