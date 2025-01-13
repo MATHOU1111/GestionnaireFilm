@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -12,7 +14,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,6 +58,9 @@ public class ModalController {
     private ComboBox<Genre> genreComboBox;
 
     @FXML
+    private ImageView imageView;
+
+    @FXML
     public void initialize() {
         // c'est dingue les enums quand même
         if(genreComboBox != null){
@@ -88,8 +94,28 @@ public class ModalController {
         actorsInput.setText(String.join(", ", film.getActeurs()));
         summaryInput.setText(film.getSummary());
         genrebox1.setValue(film.getGenre());
-    }
 
+        // Chargement de l'image via les ressources
+        String imagePath = film.getImagePath();
+        String defaultImagePath = "/affiches/matrix.jpg";
+
+        String resourcePath = (imagePath != null && !imagePath.isEmpty()) ? "/affiches/" + imagePath : defaultImagePath;
+
+        try {
+            // Chargement de l'image via InputStream
+            try (InputStream is = getClass().getResourceAsStream(resourcePath)) {
+                if (is != null) {
+                    imageView.setImage(new Image(is));
+                } else {
+                    System.out.println("Image non trouvée : " + resourcePath);
+                    imageView.setImage(null); // Optionnel : image vide si le chemin est introuvable
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erreur lors du chargement de l'image.");
+        }
+    }
 
     // Action lorsqu'on appuie sur le bouton modifier de la modale
     // Impossible d'utiliser un stream à cause de javaFX
@@ -177,7 +203,7 @@ public class ModalController {
 
 
             // Mise à jour dans le fichier JSON
-            int index = Integer.parseInt(FilmController.searchFilmInJson(String.valueOf(selectedFilm.getId())));
+            int index = Integer.parseInt(String.valueOf(FilmController.searchFilmInJson(Integer.parseInt(String.valueOf(selectedFilm.getId())))));
             FilmController.setFilm(index, selectedFilm);
 
             // Mise à jour dans la liste observable
@@ -239,7 +265,9 @@ public class ModalController {
                     directorInput.getText(),
                     summaryInput.getText(),
                     generateUniqueId(),
-                    Genre.valueOf(String.valueOf(genreComboBox.getValue()))
+                    Genre.valueOf(String.valueOf(genreComboBox.getValue())),
+                    "matrix.jpg"
+
             );
 
             if (filmsList != null) {

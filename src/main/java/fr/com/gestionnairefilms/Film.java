@@ -1,30 +1,24 @@
 package fr.com.gestionnairefilms;
 
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Locale;
+
 
 public class Film {
     private String titre;
     private int note;
     private LocalDate dateSortie;
     private Boolean visionneParUtilisateur;
-    private ArrayList<String> acteurs;  // List of actors
-    private String realisateur;  // Director
+    private ArrayList<String> acteurs;
+    private String realisateur;
     private String summary;
-
     private Genre genre;
+    private String imagePath;
 
     private final int id;
 
-    public Film(String titre, int note, LocalDate dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur, String summary, int id, Genre genre) {
+    public Film(String titre, int note, LocalDate dateSortie, Boolean visionneParUtilisateur, List<String> acteurs, String realisateur, String summary, int id, Genre genre, String imagePath) {
         this.titre = titre;
         this.note = note;
         this.dateSortie = dateSortie;
@@ -34,6 +28,8 @@ public class Film {
         this.summary = summary;
         this.id = id;
         this.genre = genre;
+        this.imagePath = imagePath;
+
     }
     public String getTitre() {
         return titre;
@@ -100,6 +96,13 @@ public class Film {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
 
     @Override
     public String toString() {
@@ -110,7 +113,9 @@ public class Film {
                 ", acteurs=" + acteurs +
                 ", realisateur='" + realisateur + '\'' +
                 ", summary='" + summary + '\'' +
-                ", genre=" + genre;
+                ", genre=" + genre
+                + ", imagePath=" + imagePath;
+
     }
 
 }

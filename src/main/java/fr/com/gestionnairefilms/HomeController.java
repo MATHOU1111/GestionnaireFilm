@@ -7,17 +7,23 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,8 +32,7 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 
 
-
-public class HelloController {
+public class HomeController {
     @FXML
     private TableView<Film> tableView;
 
@@ -38,11 +43,17 @@ public class HelloController {
 
     private FilteredList<Film> filteredFilms; // Liste filtrée des films
 
+    @FXML
+    private TableColumn<Film, String> imageColumn;
+
+
 
     @FXML
     public void initialize() throws ParseException {
         loadFilms();
 
+
+        imageColumn.setCellFactory(createImageCellFactory());
         // Ajouter un écouteur d'événements au TableVew
         tableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
@@ -53,14 +64,68 @@ public class HelloController {
                     throw new RuntimeException(e);
                 }
             }
+
+
         });
 
         setupSearchBar();
     }
 
+    private Callback<TableColumn<Film, String>, TableCell<Film, String>> createImageCellFactory() {
+        // Cette méthode crée une usine de cellules pour une TableColumn qui affiche des images.
+        // Elle retourne une TableCell personnalisée contenant un ImageView.
+
+        return (TableColumn<Film, String> param) -> new TableCell<Film, String>() {
+            private final ImageView imageView = new ImageView();
+
+            {
+                // Configure la taille de l'ImageView pour chaque cellule.
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(150);
+                setGraphic(imageView);
+            }
+
+            @Override
+            protected void updateItem(String imagePath, boolean empty) {
+                super.updateItem(imagePath, empty);
+                // Cette méthode est appelée chaque fois que la cellule doit être mise à jour.
+
+                if (empty || imagePath == null || imagePath.isEmpty()) {
+                    // Si la cellule est vide ou si le chemin de l'image est nul/vide, supprimer l'image.
+                    imageView.setImage(null);
+                } else {
+                    // Afficher le chemin du projet dans la console (utile pour le débogage).
+                    String projectRoot = System.getProperty("user.dir");
+                    System.out.println("Project root: " + projectRoot);
+
+                    // Construire le chemin d'accès à la ressource.
+                    String resourcePath = imagePath.startsWith("affiches/") ? imagePath : "/affiches/" + imagePath;
+                    System.out.println("resourcePath : " + resourcePath);
+
+                    // Charger l'image à partir des ressources.
+                    InputStream imageStream = getClass().getResourceAsStream(resourcePath);
+                    if (imageStream != null) {
+                        imageView.setImage(new Image(imageStream));
+                    } else {
+                        // Charger une image par défaut si l'image spécifique n'est pas trouvée.
+                        InputStream defaultStream = getClass().getResourceAsStream("/affiches/matrix.jpg");
+                        if (defaultStream != null) {
+                            // Si l'image par défaut est trouvée, l'utiliser.
+                            imageView.setImage(new Image(defaultStream));
+                        } else {
+                            // Si l'image par défaut n'est pas trouvée, laisser l'ImageView vide.
+                            imageView.setImage(null);
+                            System.err.println("Image par défaut non trouvée : /affiches/matrix.jpg");
+                        }
+                    }
+                }
+            }
+        };
+    }
+
     // Apparition de la modale avec les données
     public void showFilmDetails(Film selectedFilm) throws IOException {
-        FXMLLoader loader = new FXMLLoader(ModalController.class.getResource("ModalWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(ModalController.class.getResource("detailModal.fxml"));
         VBox root = loader.load();
         ModalController controller = loader.getController();
 
@@ -109,11 +174,11 @@ public class HelloController {
                 List<String> acteurs = (List<String>) filmJson.get("actors");
                 String summary = (String) filmJson.get("summary");
                 Genre genre = Genre.valueOf((String) filmJson.get("genre"));
-
+                String imagePath = (String) filmJson.get("imagePath");
                 Long id = (Long) filmJson.get("id");
                 int idInt = id.intValue();
 
-                films.add(new Film(titre, note, date, visionneParUtilisateur, acteurs, realisateur, summary, idInt, genre));
+                films.add(new Film(titre, note, date, visionneParUtilisateur, acteurs, realisateur, summary, idInt, genre, imagePath));
             }
         }
 

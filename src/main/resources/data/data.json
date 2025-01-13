@@ -12,7 +12,8 @@
     "director": "Lana Wachowski, Lilly Wachowskio",
     "dateSortie": "2008-01-11",
     "genre": "DRAME",
-    "id": 1
+    "id": 1,
+    "imagePath": "matrix.jpg"
   },
   {
     "summary": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.test",
@@ -27,7 +28,8 @@
     "director": "Quentin Tarantino",
     "dateSortie": "2007-12-31",
     "genre": "DRAME",
-    "id": 6
+    "id": 6,
+    "imagePath": "pulp-fiction.jpg"
   },
   {
     "summary": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
@@ -42,7 +44,8 @@
     "director": "Frank Darabont",
     "dateSortie": "2008-01-01",
     "genre": "DRAME",
-    "id": 8
+    "id": 8,
+    "imagePath": "matrix.jpg"
   },
   {
     "summary": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
@@ -57,7 +60,8 @@
     "director": "Robert Zemeckis",
     "dateSortie": "2008-01-01",
     "genre": "DRAME",
-    "id": 9
+    "id": 9,
+    "imagePath": "forrest-gump.jpg"
   },
   {
     "summary": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
@@ -72,7 +76,8 @@
     "director": "Christopher Nolan",
     "dateSortie": "2008-01-01",
     "genre": "ACTION",
-    "id": 10
+    "id": 10,
+    "imagePath": "batman.jpg"
   },
   {
     "summary": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
@@ -87,7 +92,8 @@
     "director": "Ridley Scott",
     "dateSortie": "2008-01-01",
     "genre": "ACTION",
-    "id": 11
+    "id": 11,
+    "imagePath": "gladiator.jpg"
   },
   {
     "summary": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
@@ -102,7 +108,8 @@
     "director": "Roger Allers, Rob Minkoff",
     "dateSortie": "2008-01-01",
     "genre": "ANIMATION",
-    "id": 12
+    "id": 12,
+    "imagePath": "roi-lion.jpg"
   },
   {
     "summary": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
@@ -117,7 +124,8 @@
     "director": "Steven Spielberg",
     "dateSortie": "1993-01-01",
     "genre": "DRAME",
-    "id": 13
+    "id": 13,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "vie de mathou",
@@ -132,7 +140,8 @@
     "director": "mathis dumage",
     "dateSortie": "2003-01-01",
     "genre": "DOCUMENTAIRE",
-    "id": 19
+    "id": 19,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "test",
@@ -145,7 +154,8 @@
     "director": "test",
     "dateSortie": "2025-01-07",
     "genre": "SCIENCE_FICTION",
-    "id": 18
+    "id": 18,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "test",
@@ -158,7 +168,8 @@
     "director": "test",
     "dateSortie": "2025-01-07",
     "genre": "DRAME",
-    "id": 17
+    "id": 17,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "n,bn,bn,",
@@ -171,7 +182,8 @@
     "director": "n,bn,b",
     "dateSortie": "2025-01-01",
     "genre": "ACTION",
-    "id": 15
+    "id": 15,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "test",
@@ -184,7 +196,8 @@
     "director": "sets",
     "dateSortie": "2024-12-30",
     "genre": "DRAME",
-    "id": 16
+    "id": 16,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "popo",
@@ -197,7 +210,8 @@
     "director": "ooooo",
     "dateSortie": "2025-01-02",
     "genre": "COMEDIE",
-    "id": 1
+    "id": 1,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "2121",
@@ -210,7 +224,8 @@
     "director": "vnvbnv",
     "dateSortie": "2025-01-07",
     "genre": "DRAME",
-    "id": 1
+    "id": 1,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "ghjg",
@@ -223,7 +238,8 @@
     "director": "jhghjgjhgjj",
     "dateSortie": "2025-01-01",
     "genre": "COMEDIE",
-    "id": 23
+    "id": 23,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "jkhkjhkj",
@@ -236,7 +252,8 @@
     "director": "hkjhk",
     "dateSortie": "2025-01-08",
     "genre": "DRAME",
-    "id": 23
+    "id": 23,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "ghjgjh",
@@ -249,7 +266,8 @@
     "director": "ghj",
     "dateSortie": "2025-01-02",
     "genre": "COMEDIE",
-    "id": 1
+    "id": 1,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "24",
@@ -262,7 +280,8 @@
     "director": "hjkhjk",
     "dateSortie": "2025-01-07",
     "genre": "COMEDIE",
-    "id": 24
+    "id": 24,
+    "imagePath": "schindler.jpg"
   },
   {
     "summary": "jhkhjkh",
@@ -275,6 +294,7 @@
     "director": "jkhjkhk",
     "dateSortie": "2024-12-31",
     "genre": "COMEDIE",
-    "id": 25
+    "id": 25,
+    "imagePath": "schindler.jpg"
   }
 ]

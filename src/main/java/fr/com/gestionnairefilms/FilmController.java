@@ -59,6 +59,7 @@ public class FilmController {
         json.put("dateSortie",dateSortieString);
         json.put("director", film.getRealisateur());
         json.put("genre", film.getGenre().toString());
+        json.put("imagePath", film.getImagePath());
         return json;
     }
 
@@ -109,25 +110,22 @@ public class FilmController {
             return;
         }
         System.out.println("Suppression du film :" + titre);
-        int compteur = Integer.parseInt(Objects.requireNonNull(searchFilmInJson(titre)));
+        int compteur = Integer.parseInt(String.valueOf(Objects.requireNonNull(searchFilmInJson(Integer.parseInt(titre)))));
         System.out.println(compteur);
         films.remove(compteur);
         saveFilms(films);
     }
 
     // Cette fonction va venir rechercher le film donné dans le JSONArray pour renvoyer son compteur
-    static String searchFilmInJson(String id) {
-        JSONArray films = getFilms(); // Charge la liste des films
+    static Integer searchFilmInJson(int id) {
+        JSONArray films = getFilms();
 
         for (Object element : films) {
             if (element instanceof JSONObject film) {
-
-                // Récupération de l'ID en tant que String pour éviter les erreurs de type
                 Object filmIdObj = film.get("id");
                 if (filmIdObj != null) {
-                    String filmId = filmIdObj.toString(); // Convertir l'ID en chaîne de caractères
-
-                    if (filmId.equals(id)) {
+                    int filmId = Integer.parseInt(filmIdObj.toString());
+                    if (filmId == id) {
                         System.out.println("Film trouvé: " + film);
                         return filmId; // Retourne l'ID trouvé
                     }
