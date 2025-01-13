@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@modal.css" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="fr.com.gestionnairefilms.ModalController"
-      prefWidth="600.0" prefHeight="800.0">
+<VBox alignment="TOP_LEFT" prefHeight="900.0" prefWidth="700.0" spacing="20.0" stylesheets="@../../../css/modal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.ModalController">
     <padding>
-        <Insets top="60.0" right="40.0" bottom="60.0" left="40.0" />
+        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
     </padding>
     <children>
-        <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="150.0" preserveRatio="true" />
-        <TextField fx:id="titleInput" editable="false" styleClass="label-header"/>
-        <TextField fx:id="directorInput" editable="false" styleClass="label"/>
-        <DatePicker fx:id="dateSortie" editable="false" styleClass="label"/>
-        <TextField fx:id="visionneParUtilisateurInput" editable="false" styleClass="label"/>
-        <TextField fx:id="noteInput" editable="false" styleClass="label"/>
-        <TextField fx:id="actorsInput" editable="false" styleClass="label"/>
-        <ComboBox fx:id="genrebox1" editable="false" promptText="Sélectionnez un genre" style="-fx-background-color: #ffffff; -fx-border-color: #ccc; -fx-border-radius: 5;" />
-        <TextArea fx:id="summaryInput" wrapText="true" editable="false" styleClass="label text-area-mod" prefRowCount="8"/>
 
-        <HBox spacing="10" alignment="CENTER">
-            <Button text="Supprimer" styleClass="btn-danger" onAction="#supprimerFilm"/>
-            <Button fx:id="modifier" text="Modifier" onAction="#modifierFilm" styleClass="btn-primary"/>
+        <!-- Champ pour le titre -->
+        <TextField fx:id="titleInput" editable="false" prefHeight="40.0" prefWidth="520.0"
+                   styleClass="label-header" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+
+        <!-- Affichage de l'image -->
+        <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="150.0" preserveRatio="true"
+                   style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2, 2);" />
+
+        <!-- Champ pour le réalisateur -->
+        <TextField fx:id="directorInput" editable="false" prefHeight="30.0" prefWidth="520.0"
+                   styleClass="label" style="-fx-font-size: 14;" />
+
+        <!-- DatePicker pour la date de sortie -->
+        <DatePicker fx:id="dateSortie" editable="false" prefHeight="40.0" prefWidth="520.0"
+                    styleClass="label" style="-fx-font-size: 14;" />
+
+        <!-- Champ pour "visionné par utilisateur" -->
+        <TextField fx:id="visionneParUtilisateurInput" editable="false" prefHeight="30.0" prefWidth="520.0"
+                   styleClass="label" style="-fx-font-size: 14;" />
+
+        <!-- Champ pour la note -->
+        <TextField fx:id="noteInput" editable="false" prefHeight="30.0" prefWidth="520.0"
+                   styleClass="label" style="-fx-font-size: 14;" />
+
+        <!-- Champ pour les acteurs -->
+        <TextField fx:id="actorsInput" editable="false" prefHeight="30.0" prefWidth="520.0"
+                   styleClass="label" style="-fx-font-size: 14;" />
+
+        <!-- ComboBox pour le genre -->
+        <ComboBox fx:id="genrebox1" editable="false" prefHeight="40.0" prefWidth="520.0"
+                  promptText="Sélectionnez un genre"
+                  style="-fx-background-color: #ffffff; -fx-border-color: #ccc; -fx-border-radius: 5;
+                         -fx-font-size: 14;" />
+
+        <!-- TextArea pour le résumé -->
+        <TextArea fx:id="summaryInput" editable="false" wrapText="true" prefHeight="150.0" prefWidth="520.0"
+                  styleClass="label text-area-mod" style="-fx-font-size: 14;" />
+
+        <!-- Boutons pour supprimer et modifier -->
+        <HBox alignment="CENTER" spacing="20">
+            <Button onAction="#supprimerFilm" styleClass="btn-danger" text="Supprimer"
+                    style="-fx-font-size: 14; -fx-background-color: #e74c3c; -fx-text-fill: white;
+                           -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            <Button fx:id="modifier" onAction="#modifierFilm" styleClass="btn-primary" text="Modifier"
+                    style="-fx-font-size: 14; -fx-background-color: #3498db; -fx-text-fill: white;
+                           -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
         </HBox>
     </children>
 </VBox>
