@@ -163,7 +163,6 @@ public class HomeController {
                     try {
                         // Updated formatter to match "yyyy-MM-dd"
                         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                        System.out.println("dateString : " + dateString);
                         date = LocalDate.parse(dateString, dateFormat);
                     } catch (DateTimeParseException e) {
                         System.out.println("Erreur de conversion de la date : " + e.getMessage());

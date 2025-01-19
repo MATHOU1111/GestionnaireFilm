@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 public class FilmController {
 
-    private static final String DATA_PATH = "C:\\workflow\\ESGI3\\GestionnaireFilms\\src\\main\\resources\\data\\data.json";
+    private static final String DATA_PATH = "target/classes/data/data.json";
 
     // Retourne un JSONARRAY des éléments de data.json
     public static JSONArray getFilms() {
@@ -30,6 +30,7 @@ public class FilmController {
         }
         return data;
     }
+
 
     // Sauvegarde le JSONArray dans le fichier data.json
     public static void saveFilms(JSONArray filmData) {
@@ -145,5 +146,9 @@ public class FilmController {
         } else {
             System.err.println("Failed to load films data.");
         }
+    }
+
+    public static String getDataPath() {
+        return DATA_PATH;
     }
 }

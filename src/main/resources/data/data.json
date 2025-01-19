@@ -1,300 +1,122 @@
 [
   {
     "summary": "A hacker learns the truth about his reality and his role in the war against its controllers.",
-    "actors": [
-      "Keanu Reeves",
-      "Laurence Fishburne",
-      "Carrie-Anne Moss4252"
-    ],
+    "actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
     "note": 9,
     "visionneParUtilisateur": false,
-    "titre": "The Matrixjlk",
-    "director": "Lana Wachowski, Lilly Wachowskio",
-    "dateSortie": "2008-01-11",
-    "genre": "DRAME",
+    "titre": "The Matrix",
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "dateSortie": "1999-03-31",
+    "genre": "SCIENCE_FICTION",
     "id": 1,
     "imagePath": "matrix.jpg"
   },
   {
-    "summary": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.test",
-    "actors": [
-      "John Travolta",
-      "Uma Thurman",
-      "Samuel L. Jackson"
-    ],
+    "summary": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "actors": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
     "note": 9,
     "visionneParUtilisateur": true,
     "titre": "Pulp Fiction",
     "director": "Quentin Tarantino",
-    "dateSortie": "2007-12-31",
+    "dateSortie": "1994-10-14",
     "genre": "DRAME",
     "id": 6,
     "imagePath": "pulp-fiction.jpg"
   },
   {
     "summary": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    "actors": [
-      "Tim Robbins",
-      "Morgan Freeman",
-      "Bob Gunton"
-    ],
+    "actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
     "note": 10,
     "visionneParUtilisateur": true,
     "titre": "The Shawshank Redemption",
     "director": "Frank Darabont",
-    "dateSortie": "2008-01-01",
+    "dateSortie": "1994-09-23",
     "genre": "DRAME",
     "id": 8,
-    "imagePath": "matrix.jpg"
+    "imagePath": "the-shawshank-redemption.jpg"
   },
   {
     "summary": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
-    "actors": [
-      "Tom Hanks",
-      "Robin Wright",
-      "Gary Sinise"
-    ],
+    "actors": ["Tom Hanks", "Robin Wright", "Gary Sinise"],
     "note": 8,
     "visionneParUtilisateur": true,
     "titre": "Forrest Gump",
     "director": "Robert Zemeckis",
-    "dateSortie": "2008-01-01",
+    "dateSortie": "1994-07-06",
     "genre": "DRAME",
     "id": 9,
     "imagePath": "forrest-gump.jpg"
   },
   {
     "summary": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    "actors": [
-      "Christian Bale",
-      "Heath Ledger",
-      "Aaron Eckhart"
-    ],
+    "actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Unknown Actor"],
     "note": 9,
     "visionneParUtilisateur": false,
     "titre": "The Dark Knight",
     "director": "Christopher Nolan",
-    "dateSortie": "2008-01-01",
+    "dateSortie": "2027-07-18",
     "genre": "ACTION",
     "id": 10,
     "imagePath": "batman.jpg"
   },
   {
     "summary": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-    "actors": [
-      "Russell Crowe",
-      "Joaquin Phoenix",
-      "Connie Nielsen"
-    ],
+    "actors": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
     "note": 8,
     "visionneParUtilisateur": true,
     "titre": "Gladiator",
     "director": "Ridley Scott",
-    "dateSortie": "2008-01-01",
+    "dateSortie": "2000-05-05",
     "genre": "ACTION",
     "id": 11,
     "imagePath": "gladiator.jpg"
   },
   {
     "summary": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
-    "actors": [
-      "Matthew Broderick",
-      "Jeremy Irons",
-      "James Earl Jones"
-    ],
+    "actors": ["Matthew Broderick", "Jeremy Irons", "James Earl Jones", "Unknown Actor"],
     "note": 8,
     "visionneParUtilisateur": false,
     "titre": "The Lion King",
     "director": "Roger Allers, Rob Minkoff",
-    "dateSortie": "2008-01-01",
+    "dateSortie": "1994-06-24",
     "genre": "ANIMATION",
     "id": 12,
     "imagePath": "roi-lion.jpg"
   },
   {
     "summary": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
-    "actors": [
-      "Liam Neeson",
-      "Ralph Fiennes",
-      "Ben Kingsley"
-    ],
+    "actors": ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
     "note": 10,
     "visionneParUtilisateur": true,
     "titre": "Schindler's List",
     "director": "Steven Spielberg",
-    "dateSortie": "1993-01-01",
+    "dateSortie": "1993-11-30",
     "genre": "DRAME",
     "id": 13,
     "imagePath": "schindler.jpg"
   },
   {
-    "summary": "vie de mathou",
-    "actors": [
-      "mathis dumage",
-      "axel dumage",
-      "cyrielle dumage"
-    ],
+    "summary": "An intimate documentary about the life of Mathis and his family.",
+    "actors": ["Mathis Dumage", "Axel Dumage", "Cyrielle Dumage"],
     "note": 9,
     "visionneParUtilisateur": true,
-    "titre": "Mathi'sfilm",
-    "director": "mathis dumage",
-    "dateSortie": "2003-01-01",
+    "titre": "Mathis' Film",
+    "director": "Mathis Dumage",
+    "dateSortie": "2027-01-01",
     "genre": "DOCUMENTAIRE",
     "id": 19,
     "imagePath": "schindler.jpg"
   },
   {
-    "summary": "test",
-    "actors": [
-      "lol,lol,lol"
-    ],
+    "summary": "A futuristic drama exploring themes of survival and human resilience.",
+    "actors": ["Unknown Actor"],
     "note": 8,
     "visionneParUtilisateur": true,
-    "titre": "test",
-    "director": "test",
-    "dateSortie": "2025-01-07",
+    "titre": "Test Film",
+    "director": "Test Director",
+    "dateSortie": "2027-01-07",
     "genre": "SCIENCE_FICTION",
     "id": 18,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "test",
-    "actors": [
-      "lol,ljoijio,jiojoik,oij"
-    ],
-    "note": 4,
-    "visionneParUtilisateur": false,
-    "titre": "test",
-    "director": "test",
-    "dateSortie": "2025-01-07",
-    "genre": "DRAME",
-    "id": 17,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "n,bn,bn,",
-    "actors": [
-      "non,lol"
-    ],
-    "note": 8,
-    "visionneParUtilisateur": true,
-    "titre": "jn;bkb",
-    "director": "n,bn,b",
-    "dateSortie": "2025-01-01",
-    "genre": "ACTION",
-    "id": 15,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "test",
-    "actors": [
-      "lol,loko"
-    ],
-    "note": 8,
-    "visionneParUtilisateur": true,
-    "titre": "test",
-    "director": "sets",
-    "dateSortie": "2024-12-30",
-    "genre": "DRAME",
-    "id": 16,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "popo",
-    "actors": [
-      "10,0,0"
-    ],
-    "note": 4,
-    "visionneParUtilisateur": true,
-    "titre": "oooo",
-    "director": "ooooo",
-    "dateSortie": "2025-01-02",
-    "genre": "COMEDIE",
-    "id": 1,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "2121",
-    "actors": [
-      "ok,ok,ok"
-    ],
-    "note": 3,
-    "visionneParUtilisateur": true,
-    "titre": "vbnvbnvnb",
-    "director": "vnvbnv",
-    "dateSortie": "2025-01-07",
-    "genre": "DRAME",
-    "id": 1,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "ghjg",
-    "actors": [
-      "1,11,1"
-    ],
-    "note": 6,
-    "visionneParUtilisateur": true,
-    "titre": "ghjhjg",
-    "director": "jhghjgjhgjj",
-    "dateSortie": "2025-01-01",
-    "genre": "COMEDIE",
-    "id": 23,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "jkhkjhkj",
-    "actors": [
-      "7,7,7,7"
-    ],
-    "note": 8,
-    "visionneParUtilisateur": true,
-    "titre": "hjjk",
-    "director": "hkjhk",
-    "dateSortie": "2025-01-08",
-    "genre": "DRAME",
-    "id": 23,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "ghjgjh",
-    "actors": [
-      "kl,l,l,"
-    ],
-    "note": 4,
-    "visionneParUtilisateur": true,
-    "titre": "ghj",
-    "director": "ghj",
-    "dateSortie": "2025-01-02",
-    "genre": "COMEDIE",
-    "id": 1,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "24",
-    "actors": [
-      "1,1,1"
-    ],
-    "note": 5,
-    "visionneParUtilisateur": true,
-    "titre": "hkjjkkj",
-    "director": "hjkhjk",
-    "dateSortie": "2025-01-07",
-    "genre": "COMEDIE",
-    "id": 24,
-    "imagePath": "schindler.jpg"
-  },
-  {
-    "summary": "jhkhjkh",
-    "actors": [
-      "jkljl,k"
-    ],
-    "note": 1,
-    "visionneParUtilisateur": true,
-    "titre": "hjkhjkh",
-    "director": "jkhjkhk",
-    "dateSortie": "2024-12-31",
-    "genre": "COMEDIE",
-    "id": 25,
     "imagePath": "schindler.jpg"
   }
 ]
