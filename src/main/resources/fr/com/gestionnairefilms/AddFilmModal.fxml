@@ -24,7 +24,7 @@
     <TextField fx:id="visionneParUtilisateurInput" promptText="Visionné (Oui/Non)" style="-fx-background-color: #ffffff; -fx-border-color: #484848FF; -fx-border-radius: 5;" />
     <TextField fx:id="noteInput" promptText="Note (1-10)" style="-fx-background-color: #ffffff; -fx-border-color: #484848FF; -fx-border-radius: 5;" />
     <TextField fx:id="actorsInput" promptText="Acteurs (séparés par des virgules)" style="-fx-background-color: #ffffff; -fx-border-color: #484848FF; -fx-border-radius: 5;" />
-
+    <TextField fx:id="imagePath" promptText="nom de l'image (avec le .jpg)" style="-fx-background-color: #ffffff; -fx-border-color: #484848FF; -fx-border-radius: 5;" />
     <!-- ComboBox pour sélectionner le genre -->
     <ComboBox fx:id="genreComboBox" promptText="Sélectionnez un genre" style="-fx-background-color: #ffffff; -fx-border-color: #ccc; -fx-border-radius: 5;" />
 

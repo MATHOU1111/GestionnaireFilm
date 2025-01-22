@@ -12,10 +12,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.*;
-import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,6 +58,7 @@ public class ModalController {
     @FXML
     private ImageView imageView;
 
+
     @FXML
     public void initialize() {
         // c'est dingue les enums quand même
@@ -69,6 +68,7 @@ public class ModalController {
         if(genrebox1 != null){
             genrebox1.getItems().addAll(Genre.values());
         }
+
     }
 
     public void setStage(Stage stage) {
@@ -158,8 +158,12 @@ public class ModalController {
 
     @FXML
     private void supprimerFilm() throws IOException {
+        System.out.println(selectedFilm);
         if (selectedFilm != null) {
             areYouSureShowModal();
+        }
+        else{
+            System.out.println("Erreur dans la suppression, selectedFilm : " + selectedFilm);
         }
     }
 
@@ -169,8 +173,9 @@ public class ModalController {
             System.out.println("Erreur: Stage non initialisé.");
             return;
         }
-        System.out.println(selectedFilm);
+
         if (selectedFilm != null) {
+            System.out.println("Suppression du film : " + selectedFilm.getTitre());
             FilmController.supprimerFilm(selectedFilm.getTitre());
             if (filmsList != null) {
                 filmsList.remove(selectedFilm); // Supprimer le film de la liste observable
@@ -223,28 +228,42 @@ public class ModalController {
     }
 
 
-    // Afficher une modale de confirmation
     public void areYouSureShowModal() throws IOException {
+        if (selectedFilm == null) {
+            System.out.println("Aucun film sélectionné !");
+            return;
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("areYouSurePanel.fxml"));
         VBox root = loader.load();
 
+        // Récupérer le contrôleur de la modale
+        AreYouSureController controller = loader.getController();
+
+        // Personnaliser le message (facultatif)
+        controller.setConfirmationMessage("Êtes-vous sûr de vouloir supprimer le film : " + selectedFilm.getTitre() + " ?");
+
+        // Créer et afficher la modale
         Stage modalStage = new Stage();
-        modalStage.setTitle("Êtes-vous sûr ?");
+        modalStage.setTitle("Confirmation de suppression");
         modalStage.initModality(Modality.APPLICATION_MODAL);
         modalStage.initOwner(stage.getScene().getWindow());
-        Scene scene = new Scene(root, 400, 200);
-        modalStage.setScene(scene);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        // Ne pas oublier de set le stage pour pouvoir fermer la modale
-        setStage(modalStage);
+        modalStage.setScene(new Scene(root, 400, 150));
         modalStage.showAndWait();
+
+        // Vérifier l'état de confirmation
+        if (controller.isConfirmed()) {
+            supprimerFilmAction();
+        } else {
+            System.out.println("Suppression annulée.");
+        }
     }
 
 
     @FXML
     private void ajouterFilmAction() {
         try {
-            // on évite les erreurs à la con (à compléter)
+            // on évite les erreurs à la con
             if (titleInput.getText().isEmpty() || directorInput.getText().isEmpty()  || noteInput.getText().isEmpty()) {
                 System.out.println("Tous les champs obligatoires doivent être remplis.");
                 return;

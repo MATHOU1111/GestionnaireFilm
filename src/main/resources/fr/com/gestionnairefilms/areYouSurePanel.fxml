@@ -5,13 +5,11 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.bootstrapfx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="fr.com.gestionnairefilms.ModalController">
-    <padding>
-        <Insets top="40.0" right="40.0" bottom="40.0" left="40.0" />
-    </padding>
-    <Text text="Etes-vous sûre de vouloir supprimer ce film ?" styleClass="h4" />
-    <HBox spacing="10.0" alignment="CENTER">
-        <Button fx:id="confirmButton" text="Confirm" styleClass="btn-danger" onAction="#supprimerFilmAction"/>
-        <Button fx:id="cancelButton" text="Cancel" styleClass="btn-outline-secondary" />
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="fr.com.gestionnairefilms.AreYouSureController"
+      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    <Label fx:id="confirmationMessage" text="Êtes-vous sûr de vouloir supprimer cet élément ?" wrapText="true"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="confirmButton" text="Confirmer" onAction="#onConfirmAction"/>
+        <Button fx:id="cancelButton" text="Annuler" onAction="#onCancelAction"/>
     </HBox>
 </VBox>

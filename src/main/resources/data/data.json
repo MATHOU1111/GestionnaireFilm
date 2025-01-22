@@ -1,7 +1,11 @@
 [
   {
     "summary": "A hacker learns the truth about his reality and his role in the war against its controllers.",
-    "actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+    "actors": [
+      "Keanu Reeves",
+      "Laurence Fishburne",
+      "Carrie-Anne Moss"
+    ],
     "note": 9,
     "visionneParUtilisateur": false,
     "titre": "The Matrix",
@@ -13,7 +17,11 @@
   },
   {
     "summary": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-    "actors": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+    "actors": [
+      "John Travolta",
+      "Uma Thurman",
+      "Samuel L. Jackson"
+    ],
     "note": 9,
     "visionneParUtilisateur": true,
     "titre": "Pulp Fiction",
@@ -25,7 +33,11 @@
   },
   {
     "summary": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    "actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+    "actors": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton"
+    ],
     "note": 10,
     "visionneParUtilisateur": true,
     "titre": "The Shawshank Redemption",
@@ -37,7 +49,11 @@
   },
   {
     "summary": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
-    "actors": ["Tom Hanks", "Robin Wright", "Gary Sinise"],
+    "actors": [
+      "Tom Hanks",
+      "Robin Wright",
+      "Gary Sinise"
+    ],
     "note": 8,
     "visionneParUtilisateur": true,
     "titre": "Forrest Gump",
@@ -49,7 +65,12 @@
   },
   {
     "summary": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    "actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Unknown Actor"],
+    "actors": [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart",
+      "Unknown Actor"
+    ],
     "note": 9,
     "visionneParUtilisateur": false,
     "titre": "The Dark Knight",
@@ -61,7 +82,11 @@
   },
   {
     "summary": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-    "actors": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+    "actors": [
+      "Russell Crowe",
+      "Joaquin Phoenix",
+      "Connie Nielsen"
+    ],
     "note": 8,
     "visionneParUtilisateur": true,
     "titre": "Gladiator",
@@ -73,7 +98,12 @@
   },
   {
     "summary": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
-    "actors": ["Matthew Broderick", "Jeremy Irons", "James Earl Jones", "Unknown Actor"],
+    "actors": [
+      "Matthew Broderick",
+      "Jeremy Irons",
+      "James Earl Jones",
+      "Unknown Actor"
+    ],
     "note": 8,
     "visionneParUtilisateur": false,
     "titre": "The Lion King",
@@ -85,7 +115,11 @@
   },
   {
     "summary": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
-    "actors": ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
+    "actors": [
+      "Liam Neeson",
+      "Ralph Fiennes",
+      "Ben Kingsley"
+    ],
     "note": 10,
     "visionneParUtilisateur": true,
     "titre": "Schindler's List",
@@ -97,7 +131,11 @@
   },
   {
     "summary": "An intimate documentary about the life of Mathis and his family.",
-    "actors": ["Mathis Dumage", "Axel Dumage", "Cyrielle Dumage"],
+    "actors": [
+      "Mathis Dumage",
+      "Axel Dumage",
+      "Cyrielle Dumage"
+    ],
     "note": 9,
     "visionneParUtilisateur": true,
     "titre": "Mathis' Film",
@@ -109,7 +147,9 @@
   },
   {
     "summary": "A futuristic drama exploring themes of survival and human resilience.",
-    "actors": ["Unknown Actor"],
+    "actors": [
+      "Unknown Actor"
+    ],
     "note": 8,
     "visionneParUtilisateur": true,
     "titre": "Test Film",

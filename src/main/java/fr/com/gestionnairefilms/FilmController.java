@@ -110,11 +110,30 @@ public class FilmController {
             System.err.println("Erreur lors du chargement des films.");
             return;
         }
-        System.out.println("Suppression du film :" + titre);
-        int compteur = Integer.parseInt(String.valueOf(Objects.requireNonNull(searchFilmInJson(Integer.parseInt(titre)))));
-        System.out.println(compteur);
-        films.remove(compteur);
+
+        // Rechercher l'index du film par son titre
+        int indexToRemove = -1;
+        for (int i = 0; i < films.size(); i++) {
+            Object element = films.get(i);
+            if (element instanceof JSONObject film) {
+                String filmTitre = (String) film.get("titre");
+                if (filmTitre != null && filmTitre.equals(titre)) {
+                    indexToRemove = i;
+                    break;
+                }
+            }
+        }
+
+        // Vérifier si le film a été trouvé
+        if (indexToRemove == -1) {
+            System.err.println("Film avec le titre \"" + titre + "\" introuvable.");
+            return;
+        }
+
+        // Supprimer le film
+        films.remove(indexToRemove);
         saveFilms(films);
+        System.out.println("Film \"" + titre + "\" supprimé avec succès.");
     }
 
     // Cette fonction va venir rechercher le film donné dans le JSONArray pour renvoyer son compteur

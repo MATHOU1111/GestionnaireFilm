@@ -94,7 +94,7 @@ public class HomeController {
                     // Si la cellule est vide ou si le chemin de l'image est nul/vide, supprimer l'image.
                     imageView.setImage(null);
                 } else {
-                    // Afficher le chemin du projet dans la console (utile pour le débogage).
+                    // Afficher le chemin du projet dans la console (debug)
                     String projectRoot = System.getProperty("user.dir");
                     System.out.println("Project root: " + projectRoot);
 
@@ -132,7 +132,7 @@ public class HomeController {
         Stage modalStage = new Stage();
         controller.setStage(modalStage);  // Passez l'instance du Stage au contrôleur
 
-        // Passez la liste des films au ModalController
+        // Passer la liste des films au ModalController
         controller.setFilmsList(films);
 
         modalStage.setTitle("Détails du Film");
@@ -209,6 +209,20 @@ public class HomeController {
         // Rafraîchir TableView après ajout
         tableView.refresh();
     }
+
+    @FXML
+    private void genererHTML() throws IOException {
+        // Appel de la méthode main du fichier FileGenerator
+        try {
+            String[] args = {};
+            FileGenerator.main(args);
+            System.out.println("Fichier HTML généré !");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erreur lors de la génération du fichier.");
+        }
+    }
+
 
     private void setupSearchBar() {
         // Ajoute un listener pour filtrer les films à chaque modification de texte

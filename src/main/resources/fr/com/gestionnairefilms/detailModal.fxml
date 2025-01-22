@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_LEFT" prefHeight="900.0" prefWidth="700.0" spacing="20.0" stylesheets="@../../../css/modal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.ModalController">
+<VBox alignment="TOP_LEFT" prefHeight="1200.0" prefWidth="700.0" spacing="20.0" stylesheets="@../../../css/modal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.com.gestionnairefilms.ModalController">
     <padding>
-        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+        <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
     </padding>
     <children>
 
@@ -55,7 +55,7 @@
                   styleClass="label text-area-mod" style="-fx-font-size: 14;" />
 
         <!-- Boutons pour supprimer et modifier -->
-        <HBox alignment="CENTER" spacing="20">
+        <HBox alignment="CENTER" spacing="10">
             <Button onAction="#supprimerFilm" styleClass="btn-danger" text="Supprimer"
                     style="-fx-font-size: 14; -fx-background-color: #e74c3c; -fx-text-fill: white;
                            -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
